@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { ReactDOM } from "react";
+import axios from 'axios'
 
 export default function AddRun({addRun, closeForm}) {
   const [minutes, setMinutes] = useState("")
@@ -18,28 +19,28 @@ export default function AddRun({addRun, closeForm}) {
   };
 
   return (
-    <div>
-      <div>Time: 
-        <label htmlFor="minutes">Minutes: </label>
-        <input type="number" id="minutes" name="minutes" value={minutes} onChange={(e) => setMinutes(e.target.value)}/>
-        <label htmlFor="seconds">Seconds: </label>
-        <input type="number" id="seconds" name="seconds" value={seconds} onChange={(e) => setSeconds(e.target.value)} min={0} max={59}/>
+    <div className="inputsWrapper">
+      <div className="timeInputs">Time: 
+        <label htmlFor="minutes" className="minLabel">Minutes: </label>
+        <input type="number" id="minutes" name="minutes" value={minutes} onChange={(e) => setMinutes(e.target.value)} className="minInput"/>
+        <label htmlFor="seconds" className="secLabel">Seconds: </label>
+        <input type="number" id="seconds" name="seconds" value={seconds} onChange={(e) => setSeconds(e.target.value)} min={0} max={59} className="secInput"/>
       </div>
-      <div>
-        <label htmlFor="distance">Distance: </label>
-        <input type="number" value={distance} onChange={(e) => setDistance(e.target.value)} name="distance"/>
-        <select name="distanceType" id="" value={distanceType} onChange={(e) => setDistanceType(e.target.value)}>
+      <div className="distanceInputs">
+        <label htmlFor="distance" className="distanceLabel">Distance: </label>
+        <input type="number" value={distance} onChange={(e) => setDistance(e.target.value)} name="distance" className="distanceInput"/>
+        <select name="distanceType" id="" value={distanceType} onChange={(e) => setDistanceType(e.target.value)} className="distanceTypeInput">
           <option value="Kilometres">Kilometres</option>
           <option value="Miles">Miles</option>
         </select>
       </div>
-      <div>
-        <label htmlFor="date">Date: </label>
-        <input type="date" onChange={(e) => setDate(e.target.value)} name="date"/>
+      <div className="dateInputs">
+        <label htmlFor="date" className="dateLabel">Date: </label>
+        <input type="date" onChange={(e) => setDate(e.target.value)} name="date" className="dateInput"/>
       </div>
       <div>
-        <button onClick={handleSubmit}>Add</button>
-        <button onClick={closeForm}>X</button>
+        <button onClick={handleSubmit} className="addRunBut">Add</button>
+        <button onClick={closeForm} className="closeFormBut">X</button>
       </div>
     </div>
   )

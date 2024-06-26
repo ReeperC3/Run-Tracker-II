@@ -3,6 +3,7 @@ import { ReactDOM } from "react";
 import { useState } from "react";
 import AddRun from "./addRun";
 import DisplayRuns from "./displayRuns";
+import axios from 'axios'
 
 export default function Main() {
 
@@ -19,7 +20,7 @@ export default function Main() {
       seconds,
       distance,
       distanceType,
-      index: runs.length + 1,
+      index: (runs.length + 1) + run,
       date,
       calcSpeed: () => {
         const timeInSeconds = Number(minutes) * 60 + Number(seconds);
@@ -38,12 +39,12 @@ export default function Main() {
   };
 
   return (
-    <>
+    <div className="allWrapper">
       <div>
-        <button onClick={handleClick}>Add new</button>
+        <button onClick={handleClick} className="openFormBut">Add new</button>
       </div>
       {showForm && (<AddRun addRun={addRun} closeForm={handleClick}/>)}
       <DisplayRuns runs={runs} removeRun={removeRun} />
-    </>
+    </div>
   )
 }

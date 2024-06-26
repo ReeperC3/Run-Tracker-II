@@ -1,1 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: rgb(12, 21, 19);
+  background-color: rgb(232, 232, 232);
+}
+
+button {
+  font-size: 20px;
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 0;
+  background-color: rgb(170, 239, 225);
+  transition-duration: 0.3s;
+}
+
+button:hover {
+  background-color: rgb(18, 78, 55);
+  color: white;
+}
+
+button:active {
+  background-color: black;
+  color: rgb(18, 78, 55);
+}
+
+.allWrapper {
+  display: grid;
+  place-items: center;
+}
+
+input {
+  margin: 10px;
+  border: 1px gray solid;
+  font-size: 20px;
+  border-radius: 2px;
+}
+
+select {
+  font-size: 20px;
+  border: 1px gray solid;
+  border-radius: 2px;
+}
+
+label {
+  margin: 10px;
+}
+
+.inputsWrapper {
+  display: grid;
+  place-items: center;
+}
+
+.run {
+  margin: 10px;
+}
