@@ -5,7 +5,6 @@ import SignupForm from './Components/signup.jsx'
 export default function App() {
   return (
   <>
-    <SignupForm />
     <Main />
   </>
   )
