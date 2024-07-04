@@ -107,6 +107,7 @@ app.get('/get-runs', (req, res) => {
       res.status(404).send('An error occured getting runs')
     } 
     if (result) {
+      console.log("getting runs")
       res.send(result.runs)
     }
   })
