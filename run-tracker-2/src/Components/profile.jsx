@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 export default function ProfilePage () {
-  const location = useLocation()
-  const user = location.state
+  const user = useSelector((state) => state.auth.user)
+  console.log(user)
   return (
-    <div>
+    <div className="profile">
       <h3>Profile</h3>
       {user ? <div>Hi, {user}!</div> : null}
     </div>
