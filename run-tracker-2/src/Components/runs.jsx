@@ -23,13 +23,16 @@ export default function Main() {
     const getem = async () => {
       try {
         const geting = await axios.get('http://localhost:8080/get-runs', {params: {user}})
-        console.log(geting)
+        console.log(geting.data[0].runs)
         let runs2 = runs
-        geting.forEach(run => {
+        geting.data[0].runs.forEach(run => {
           if (runs.includes(run)) {
             console.log('no bish')
+          } else if (runs2.includes(run)) {
+            console.log("no bish II")
           } else {
             runs2.push(run)
+            console.log(run)
           }
         })
         setRuns(runs2)
@@ -41,6 +44,7 @@ export default function Main() {
       }
     }
     getem()
+    console.log("fire")
   }, [user]); 
 
   function openForm () {
@@ -49,7 +53,6 @@ export default function Main() {
 
   function handleClick () {
     setShowForm(!showForm)
-    dispatch(setBackendRuns({ username: user, runs: runs }));
   }
 
   function calcSpeed (minutes, seconds, distanceType, distance) {
@@ -75,14 +78,18 @@ export default function Main() {
     setRuns(runs => [...runs, newRun]);
     console.log(runs)
     setShowForm(false);
+    dispatch(setBackendRuns({ username: user, runs: [...runs, newRun] }));
     console.log("Updated runs array:", runs); // Add this log
   };
 
   const removeRun = (index) => {
     let newRuns = runs.filter((run) => run.index !== index)
+    newRuns.forEach((run, index) => {
+      run.index = index + 1
+    })
     console.log(newRuns)
     setRuns(newRuns);
-    dispatch(setBackendRuns({ username: user, runs: runs }));
+    dispatch(setBackendRuns({ username: user, runs: newRuns }));
   };
 
   return (

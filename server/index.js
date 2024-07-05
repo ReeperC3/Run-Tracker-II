@@ -101,14 +101,14 @@ app.post('/send-runs', (req, res) => {
   })});
 
 app.get('/get-runs', (req, res) => {
-  const username = req.params.user
-  db.query("SELECT * FROM users WHERE username = ?", [username], (err, result) => {
+  const username = req.query.user
+  db.query("SELECT u.runs FROM users u WHERE username = ?", [username], (err, result) => {
     if (err) {
       res.status(404).send('An error occured getting runs')
     } 
     if (result) {
-      console.log("getting runs")
-      res.send(result.runs)
+      console.log("getting runs" + `${result}`)
+      res.send(result)
     }
   })
 })
